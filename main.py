@@ -3,6 +3,7 @@ from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.requests import Request
 from fastapi.templating import Jinja2Templates
 
+from exceptions import CityNotFound
 from forecast import fetch_forecast
 
 
@@ -18,9 +19,14 @@ async def handle_index(request: Request):
 
 @app.get("/forecast", response_class=HTMLResponse)
 async def handle_forecast(request: Request, city: str):
-    forecast = await fetch_forecast(city)
-    return templates.TemplateResponse(
-        request=request,
-        name="forecast.html",
-        context={"city": city, "forecast": forecast},
-    )
+    try:
+        forecast = await fetch_forecast(city)
+        return templates.TemplateResponse(
+            request=request,
+            name="forecast.html",
+            context={"city": city, "forecast": forecast},
+        )
+    except CityNotFound as e:
+        return templates.TemplateResponse(
+            request=request, name="city_not_found.html", context={"city": e.city}
+        )
