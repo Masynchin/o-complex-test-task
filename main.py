@@ -15,7 +15,7 @@ async def handle_index(request: Request):
     return FileResponse(path="index.html")
 
 
-@app.get("/forecast/{city}", response_class=HTMLResponse)
+@app.get("/forecast", response_class=HTMLResponse)
 async def handle_forecast(request: Request, city: str):
     forecast = await fetch_forecast(city)
     return templates.TemplateResponse(

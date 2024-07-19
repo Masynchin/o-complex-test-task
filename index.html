@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://unpkg.com/htmx.org@2.0.1"
+    integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/"
+    crossorigin="anonymous"></script>
   <title>Прогноз погоды</title>
   <style>
     header {
@@ -23,12 +26,11 @@
 <body>
   <header>
     <div>
-      <label for="city-query">Введите город:</label>
-      <input type="search" id="city-query" />
-      <button>Получить погоду</button>
+      <input type="search" name="city" placeholder="Введите город..." hx-get="/forecast" hx-target="#main"
+        hx-swap="innerHTML"></input>
     </div>
   </header>
-  <main></main>
+  <main id="main"></main>
 </body>
 
 </html>
