@@ -6,7 +6,7 @@ from app.exceptions import CityNotFound
 df = pd.read_csv("towns.csv")
 
 def city_geocords(city: str) -> (float, float):
-    matches = df[df["city"].str.match(city)]
+    matches = df[df["city"].str.match(city, case=False)]
     if len(matches) != 1:
         raise CityNotFound(city)
     else:
