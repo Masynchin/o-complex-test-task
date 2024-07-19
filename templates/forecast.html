@@ -11,5 +11,5 @@
 <h2>На ближайшее время</h2>
 
 {% for (time, temperature) in zip(forecast.hourly.time, forecast.hourly.temperature_2m) %}
-<p>{{time.strftime("%H:%M")}} {{temperature}}{{forecast.hourly_units.temperature_2m}}</p>
+<p>В {{time.strftime("%H:%M")}}: температура {{temperature}}{{forecast.hourly_units.temperature_2m}}</p>
 {% endfor %}
