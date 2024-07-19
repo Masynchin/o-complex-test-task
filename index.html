@@ -29,7 +29,7 @@
   <header>
     <script>
       function checkUserKeydown(event) {
-        return event instanceof KeyboardEvent
+        return event instanceof KeyboardEvent && (event.keyCode != 13)
       }
     </script>
     <div>
@@ -43,6 +43,10 @@
     </div>
   </header>
   <main id="main"></main>
+  <footer>
+    <button hx-get="/history" hx-target="#stats">Показать вашу статистику</button>
+    <ul id="stats"></ul>
+  </footer>
 </body>
 
 </html>
