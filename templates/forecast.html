@@ -8,11 +8,6 @@
 <p>Порывы ветра: {{forecast.current.wind_gusts_10m}}{{forecast.current_units.wind_gusts_10m}}</p>
 <p>Влажность: {{forecast.current.relative_humidity_2m}}{{forecast.current_units.relative_humidity_2m}}</p>
 
-<svg width="90" height="90">
-  <image xlink:href="https://api.iconify.design/wi:{{forecast.current.weather_code|weather_code_to_icon}}.svg"
-    width="90" height="90" />
-</svg>
-
 <h2>На ближайшее время</h2>
 
 {% for (time, temperature) in zip(forecast.hourly.time, forecast.hourly.temperature_2m) %}
