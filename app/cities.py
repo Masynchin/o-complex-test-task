@@ -14,3 +14,7 @@ def city_geocords(city: str) -> (float, float):
         lat = float(match["lat"])
         lon = float(match["lon"])
         return (lat, lon)
+
+
+def city_suggestions(part: str) -> list[str]:
+    return list(df[df["city"].str.contains(part, case=False)]["city"])

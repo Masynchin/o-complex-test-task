@@ -27,9 +27,19 @@
 
 <body>
   <header>
+    <script>
+      function checkUserKeydown(event) {
+        return event instanceof KeyboardEvent
+      }
+    </script>
     <div>
-      <input type="search" name="city" placeholder="Введите город..." hx-get="/forecast" hx-target="#main"
-        hx-swap="innerHTML"></input>
+      <input id="search" name="city" list="suggestions" autocomplete="off" placeholder="Введите город..."></input>
+      <datalist id="suggestions"></datalist>
+      <div hx-get="/suggestions" hx-trigger="keyup[checkUserKeydown.call(this, event)] changed from:#search delay:25ms"
+        hx-target="#suggestions" hx-include="#search">
+      </div>
+      <div hx-get="/forecast" hx-trigger="keyup[keyCode==13] from:#search" hx-include="#search" hx-target="#main">
+      </div>
     </div>
   </header>
   <main id="main"></main>

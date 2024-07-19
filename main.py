@@ -3,6 +3,7 @@ from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.requests import Request
 from fastapi.templating import Jinja2Templates
 
+from app.cities import city_suggestions
 from app.exceptions import CityNotFound
 from app.forecast import fetch_forecast
 
@@ -30,3 +31,11 @@ async def handle_forecast(request: Request, city: str):
         return templates.TemplateResponse(
             request=request, name="city_not_found.html", context={"city": e.city}
         )
+
+
+@app.get("/suggestions", response_class=HTMLResponse)
+async def handle_suggestions(request: Request, city: str):
+    suggestions = city_suggestions(city)[:10]
+    return templates.TemplateResponse(
+        request=request, name="suggestions.html", context={"suggestions": suggestions},
+    )
