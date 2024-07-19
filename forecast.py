@@ -1,14 +1,7 @@
 from aiohttp import ClientSession
 
-from exceptions import CityNotFound
+from cities import city_geocords
 from schema import CurrentForecast
-
-
-def city_geocords(city: str) -> (float, float):
-    if city == "che":
-        return (59.1333, 37.9)
-    else:
-        raise CityNotFound(city)
 
 
 def url_params(geocords: (float, float)) -> str:
