@@ -42,6 +42,20 @@ class Current(BaseModel):
     wind_gusts_10m: float
 
 
+class HourlyUnits(BaseModel):
+    time: str
+    temperature_2m: str
+    precipitation: str
+    weather_code: str
+
+
+class Hourly(BaseModel):
+    time: list[datetime]
+    temperature_2m: list[float]
+    precipitation: list[float]
+    weather_code: list[int]
+
+
 class CurrentForecast(BaseModel):
     latitude: float
     longitude: float
@@ -52,6 +66,8 @@ class CurrentForecast(BaseModel):
     elevation: float
     current_units: CurrentUnits
     current: Current
+    hourly_units: HourlyUnits
+    hourly: Hourly
 
 
 def city_geocords(city: str) -> (float, float):
@@ -80,9 +96,11 @@ default_url_params = {
         "wind_direction_10m",
         "wind_gusts_10m",
     ],
+    "hourly": ["temperature_2m", "precipitation", "weather_code"],
     "wind_speed_unit": "ms",
-    "timeformat": "unixtime",
-    "forecast_days": 3,
+    "timezone": "Europe/Moscow",
+    "forecast_days": 1,
+    "forecast_hours": 8,
 }
 
 

@@ -10,6 +10,7 @@ from forecast import fetch_forecast
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 templates.env.filters["weather_code_to_icon"] = weather_code_to_icon
+templates.env.globals["zip"] = zip
 
 
 @app.get("/")

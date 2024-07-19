@@ -15,5 +15,6 @@
 
 <h2>На ближайшее время</h2>
 
-{% for hourly in [] %}
+{% for (time, temperature) in zip(forecast.hourly.time, forecast.hourly.temperature_2m) %}
+<p>{{time.strftime("%H:%M")}} {{temperature}}{{forecast.hourly_units.temperature_2m}}</p>
 {% endfor %}
