@@ -20,6 +20,3 @@ class History:
 
     def stats(self, user_id) -> Counter:
         return Counter(city for (_, city, _) in self.hits)
-
-
-history = History()
