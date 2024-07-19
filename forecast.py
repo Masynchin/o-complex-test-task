@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from aiohttp import ClientSession
 from pydantic import BaseModel
 
@@ -22,7 +24,7 @@ class CurrentUnits(BaseModel):
 
 
 class Current(BaseModel):
-    time: int
+    time: datetime
     interval: int
     temperature_2m: float
     relative_humidity_2m: int

@@ -1,1 +1,19 @@
-<h1>Hello, forecast!</h1>
+<h1>Погода в городе {{city}}</h1>
+
+<h2>Текущая</h2>
+
+<p>Температура: {{forecast.current.temperature_2m}}{{forecast.current_units.temperature_2m}}</p>
+<p>Ощущается как: {{forecast.current.apparent_temperature}}{{forecast.current_units.apparent_temperature}}</p>
+<p>Скорость ветра: {{forecast.current.wind_speed_10m}}{{forecast.current_units.wind_speed_10m}}</p>
+<p>Порывы ветра: {{forecast.current.wind_gusts_10m}}{{forecast.current_units.wind_gusts_10m}}</p>
+<p>Влажность: {{forecast.current.relative_humidity_2m}}{{forecast.current_units.relative_humidity_2m}}</p>
+
+<svg width="90" height="90">
+  <image xlink:href="https://api.iconify.design/wi:{{forecast.current.weather_code|weather_code_to_icon}}.svg"
+    width="90" height="90" />
+</svg>
+
+<h2>На ближайшее время</h2>
+
+{% for hourly in [] %}
+{% endfor %}
