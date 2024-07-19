@@ -1,6 +1,6 @@
 import pandas as pd
 
-from exceptions import CityNotFound
+from app.exceptions import CityNotFound
 
 
 df = pd.read_csv("towns.csv")

@@ -3,8 +3,8 @@ from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.requests import Request
 from fastapi.templating import Jinja2Templates
 
-from exceptions import CityNotFound
-from forecast import fetch_forecast
+from app.exceptions import CityNotFound
+from app.forecast import fetch_forecast
 
 
 app = FastAPI()

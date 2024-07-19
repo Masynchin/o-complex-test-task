@@ -1,7 +1,7 @@
 from aiohttp import ClientSession
 
-from cities import city_geocords
-from schema import CurrentForecast
+from app.cities import city_geocords
+from app.schema import CurrentForecast
 
 
 def url_params(geocords: (float, float)) -> str:
